@@ -6,11 +6,10 @@ const jwt_key=process.env.jWT_SECRET_KEY
 const signup_controller=async(req,res)=>{
     try{
     const user_data=req.body;
-    // console.log(user_data)
+    console.log(user_data)
     const UserCheck=await UserModel.findOne({Email:user_data.Email})
     if(UserCheck) throw new Error("User already registered")
     const hasedPassword=await bcrypt.hash(user_data.Password,10)
-    // console.log(hasedPassword)
     const UserDocument=await UserModel.create({...user_data,Password:hasedPassword})
     const token=jwt.sign({payload:UserDocument._id},jwt_key)
     res.cookie("loged_in",token)
@@ -29,23 +28,24 @@ const signup_controller=async(req,res)=>{
 const signin_controller=async(req,res)=>{
     try{
         const Login_Data=req.body
-        // console.log(req.cookies)
-        const Req_token=req.cookies.loged_in
+        console.log(Login_Data)
+        const Req_token=req.cookies.loged
+        console.log(Req_token)
         if(Req_token){
             const user_id=jwt.verify(Req_token,jwt_key).payload
             const UserDocument=await UserModel.findById(user_id)
-            if(UserDocument){
-                res.cookie("loged_in",Req_token)
+            if(!UserDocument) throw new Error("User not found");
+                res.cookie("loged",Req_token)
                 res.status(200).json({
                     logedin:true
                 })
-            }
         }
         else{
         const UserDocument=await UserModel.findOne({Email:Login_Data.Email})
         if(!UserDocument) throw new Error("Signup first")
         const token=jwt.sign({payload:UserDocument._id},jwt_key)
-        res.cookie("loged_in",token)
+        console.log(token)
+        res.cookie("loged",token,{httpOnly:false,expires:new Date(Date.now()+5654654654)})
         res.status(200).json({
             message:"User Loged In",
             loged:true

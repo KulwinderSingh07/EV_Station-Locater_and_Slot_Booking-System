@@ -8,12 +8,16 @@ const cors=require("cors");
 const bodyparser=require("body-parser");
 
 require("dotenv").config();
+app.use(cors({
+    origin:"http://localhost:3000",
+    credentials:true
+}));
+app.use(express.json())
+app.use(cookieparser());
 app.use(bodyparser.urlencoded({ extended: true }));
 const PORT=process.env.PORT
+app.use(express.urlencoded({extended:false}))
 require("./Connnection/db_connection")
-app.use(cors());
-app.use(cookieparser());
-app.use(express.json())
 
 app.use("/user",require("./Routes/login_and_signup"))
 // app.use("/product",require("./Routes/product"))
