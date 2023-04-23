@@ -5,9 +5,10 @@ import { useEffect } from 'react';
 import { useCallback } from 'react';
 import {FaLocationArrow} from 'react-icons/fa'
 import { useRef } from 'react';
-// import { GoogleMap } from '@react-google-maps/api';
-// import 
+import axios from "axios"
+import REQUEST_URL from '../../Utils';
 import {BiCurrentLocation} from 'react-icons/bi'
+import StationsList from '../StationsList';
 const containerStyle = {
   width: '50%',
   height: '100vh',
@@ -19,13 +20,7 @@ const MapsViewWindow = () => {
     const [lng, setLns] = useState()
     const [values,setvalues]=useState()
     const [map, setMap] = useState(null)
-      /** @type React.MutableRefObject<HTMLInputElement> */
-  const originRef = useRef()
-  /** @type React.MutableRefObject<HTMLInputElement> */
-  const destiantionRef = useRef()
-    const [directionsResponse, setDirectionsResponse] = useState(null)
-    const [distance, setDistance] = useState('')
-    const [duration, setDuration] = useState('')
+    const [Station_data,setStation_data]=useState(null);
     const center = {
         lat:Number(lat),
         lng:Number(lng)
@@ -34,7 +29,14 @@ const MapsViewWindow = () => {
             lat:30.708513,
             lng:76.802577
         }
+
+        const StationFetch=async()=>{
+          const StationData=await axios.get(`${REQUEST_URL}/station`)
+          console.log(StationData.data.data)
+          setStation_data(StationData.data.data)
+        }
         useEffect(()=>{
+          StationFetch()
  navigator.geolocation.getCurrentPosition((position)=>{
             console.log(position.coords.latitude)
             setLat(Number(position.coords.latitude))
@@ -58,36 +60,16 @@ const MapsViewWindow = () => {
       const onUnmount = useCallback(function callback(map) {
           setMap(null)
         }, [])
-        var pointA = new google.maps.LatLng(51.7519, -1.2578)
-      var pointB = new google.maps.LatLng(50.8429, -0.1313)
-      
-      async function calculateRoute() {
-        if (originRef.current.value === '' || destiantionRef.current.value === '') {
-          return
-        }
-        // eslint-disable-next-line no-undef
-        const directionsService = new google.maps.DirectionsService()
-        const results = await directionsService.route({
-          origin:pointA,
-          destination:pointB,
-          // eslint-disable-next-line no-undef
-          travelMode: google.maps.TravelMode.DRIVING,
-        })
-
-        setDirectionsResponse(results)
-        // setDistance(results.routes[0].legs[0].distance.text)
-        // setDuration(results.routes[0].legs[0].duration.text)
-      }
       return ( 
           <div className='Map-container'>
             <div className='Map-controllers'>
-                {/* <Autocomplete> */}
-                <input type='text' placeholder='Destination...' ref={originRef}/>
-                {/* </Autocomplete> */}
-                {/* <{}/> */}
-            <button onClick={()=>{
-                map.panTo(center)
-            }}><FaLocationArrow/></button>
+              <button onClick={()=>{
+                  map.panTo(center)
+              }} className='currentplacebutton'>Current Location  <FaLocationArrow/></button>
+              <h1>Station</h1>
+              {Station_data!==null &&
+              <StationsList stationsData={Station_data} map={map}/>
+}
             </div>
       {  isLoaded ? (
         <GoogleMap
@@ -98,13 +80,20 @@ const MapsViewWindow = () => {
           onUnmount={onUnmount}
         >
             <Marker position={center} icon="http://www.robotwoods.com/dev/misc/bluecircle.png" title='Current Location'/>
-            <Marker position={{
+            {/* <Marker position={{
                 lat:30.708513,
                 lng:76.802577
-            }} onClick={calculateRoute}/>
-            {directionsResponse && (
-                <DirectionsRenderer directions={directionsResponse}/>
-            )}
+            }}/> */}
+            {Station_data!==null &&
+            Station_data.map((station)=>{
+              return(
+                <Marker position={{
+                  lat:station.lat,
+                  lng:station.lng
+                }}/>
+              )
+            })
+          }
           { /* Child components, such as markers, info windows, etc. */ }
           <></>
         </GoogleMap>

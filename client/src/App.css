@@ -1,6 +1,113 @@
 .Map-container{
     display: flex;
-    /* width: 50%; */
-    justify-content: flex-end;
+    justify-content: space-between;
+}
+.stationlist{
+    margin:5px;
+  padding: 0.6rem;
+  border: 0.5px solid black;
+/* display: flex; */
+  box-sizing:content-box;
+  background-color: #171717;
+  color: white;
+  border-radius: 10px;
+  }
+  .stationbody{
+    display: flex;
+  }
+  .stationbody button{
+    background-color: rgb(84, 212, 84);
+    /* font-size: x-large; */
+    border-radius: 0.5rem;
+    padding: 0.3rem;  
+    cursor:pointer;
+  }
+  .StationSlotDetailHeader{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+  }
+  .StaitonDetailBody{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    /* border: 2px solid black; */
+    border-left:4px solid rgb(83, 130, 213);
+    border-top: 3px solid rgb(83, 130, 213);
+    border-bottom: 3px solid rgb(83, 130, 213);;    
+    border-right: 4px solid rgb(83, 130, 213);
+    border-radius: 10px;
+    /* background-color:black; */
+    /* color: white; */
+    font-size:x-large;
+}
+  .StationBasicDetail{
+    text-align: center;
+  }
+  .slotBody{
+    display: flex;
+    justify-content: space-between;
+  }
+  .solotheadings{
+    display: flex;
+    justify-content: space-between;
+  }
+  .slotheader{
+    margin:5px;
+    padding: 0.6rem;
+    border: 0.5px solid black;
+  /* display: flex; */
+    box-sizing:content-box;
+    background-color: #171717;
+    color: white;
+    border-radius: 10px;
+  }
+  .slotBody button{
+    background-color: rgb(84, 212, 84);
+    /* font-size: x-large; */
+    border-radius: 0.5rem;
+    padding: 0.3rem;  
+    cursor:pointer;
 
+  }
+  .solotheadings{
+    padding: 1rem;
+    border-radius: 12px;
+    border-left:  1px solid  rgb(83, 130, 213);
+    border-right:  1px solid  rgb(83, 130, 213);
+    border-top:  0.5rem solid  rgb(83, 130, 213);
+    border-bottom:  0.5rem solid rgb(83, 130, 213);
+    font-size: large;
+    font-weight:bolder;
+  }
+  
+  .StationDetailHeader div{
+    margin-top: 2px;
+  }
+  .label{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2px;
+  }
+  .StationSlotDetailHeader h1{
+    font-size:60px;
+    font-weight: bold;
+  }
+  /* .StationSlotDetailHeader{
+    background-color:rgb(56, 162, 44);
+  } */
+  .Map-controllers{
+    text-align: center;
+  }
+  .currentplacebutton{
+    width: 20%;
+    padding: 10px;
+    border-radius: 7px;
+    font-size: large;
+}
+.Payment-border{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
