@@ -4,6 +4,7 @@ import SignupPage from './Pages/signup';
 import LoginPage from './Pages/login';
 import DashBoard from './Pages/dashboard';
 import MapsViewWindow from './Components/Maps/Map';
+
 function App() {
   return (
     <div className="App">

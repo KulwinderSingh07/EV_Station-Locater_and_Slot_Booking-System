@@ -20,6 +20,7 @@ app.use(express.urlencoded({extended:false}))
 require("./Connnection/db_connection")
 
 app.use("/user",require("./Routes/login_and_signup"))
+app.use("/station",require("./Routes/Station_routes"))
 // app.use("/product",require("./Routes/product"))
 // app.use("/cart",require("./Routes/cart"))
 // app.use("/order",require("./Routes/order"))

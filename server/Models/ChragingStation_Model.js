@@ -1,5 +1,42 @@
 const mongoose=require("mongoose")
 const station_schema=mongoose.Schema({
-    
-    
+    owner_id:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"UserModel"
+    },
+    name:{
+        type:String
+    },
+    description:{
+        type:String
+    },
+    location:{
+        type:String
+    },
+    lat:{
+        type:Number
+    },
+    lng:{
+        type:Number
+    },
+    slots:[{
+        slot_start_timing:{
+            type:String,
+        },
+        slot_end_timing:{
+            type:String
+        },
+        price:{
+            type:Number
+        },
+        booked:{
+            type:Boolean,
+            default:false
+        },
+        booker_id:{
+            type:mongoose.Schema.Types.ObjectId
+        }
+    }]
 })
+const Station_Model=mongoose.model("Station_Model",station_schema)
+module.exports=Station_Model
