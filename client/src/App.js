@@ -15,9 +15,9 @@ function App() {
       <BrowserRouter>
           <Routes>
             {/* <Route exact path="/" element={<Mainpage />} /> */}
-            <Route exact path='/' element={<DashBoard/>}/>
+            {/* <Route exact path='/' element={<DashBoard/>}/> */}
+            <Route exact path="/" element={<LoginPage/>} />
             <Route exact path="/User/Singup" element={<SignupPage/>} />
-            <Route exact path="/User/Login" element={<LoginPage/>} />
             <Route exact path='/Map' element={<MapsViewWindow/>}/>
             <Route exact path='/Map/:stationID' element={<StaionDetailsSlots/>}/>
             <Route exact path='/Payment' element={<PaymentPage/>}/>

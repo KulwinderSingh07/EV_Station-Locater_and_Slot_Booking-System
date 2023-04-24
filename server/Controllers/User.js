@@ -15,7 +15,8 @@ const signup_controller=async(req,res)=>{
     res.cookie("loged_in",token)
     res.status(200).json({
         message:"user has registered",
-        registered:true
+        registered:true,
+        cookie:token
     })
     }catch(err){
         res.status(400).json({
@@ -29,26 +30,29 @@ const signin_controller=async(req,res)=>{
     try{
         const Login_Data=req.body
         console.log(Login_Data)
-        const Req_token=req.cookies.loged
+        // console.log(req.cookies)
+        const Req_token=Login_Data.Token
         console.log(Req_token)
         if(Req_token){
             const user_id=jwt.verify(Req_token,jwt_key).payload
             const UserDocument=await UserModel.findById(user_id)
             if(!UserDocument) throw new Error("User not found");
                 res.cookie("loged",Req_token)
+                console.log("chal reha")
                 res.status(200).json({
-                    logedin:true
+                    logedin:true,
+                    cookie:Req_token
                 })
         }
         else{
         const UserDocument=await UserModel.findOne({Email:Login_Data.Email})
         if(!UserDocument) throw new Error("Signup first")
         const token=jwt.sign({payload:UserDocument._id},jwt_key)
-        console.log(token)
-        res.cookie("loged",token,{httpOnly:false,expires:new Date(Date.now()+5654654654)})
+        res.cookie("loged",token,{expires:new Date(Date.now()+5654654654)})
         res.status(200).json({
             message:"User Loged In",
-            loged:true
+            loged:true,
+            cookie:token
         })
     }
     }
@@ -71,7 +75,6 @@ const GetSpecificUserController=async (req,res)=>{
             message:"User found",
             data:UserDocument
         })
-
     }catch(err){
         res.status(404).json({
             message:err.message,

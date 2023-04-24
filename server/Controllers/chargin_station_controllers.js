@@ -57,9 +57,9 @@ catch(err){
 const Slot_Booking_Station=async(req,res)=>{
     try{
     const station_id=req.params.stationID;
-    const Req_token=req.cookies.loged
+    // const Req_token=req.cookies.loged
+    const {slot_start_timing,Req_token}=req.body;
     const user_id=jwt.verify(Req_token,jwt_key).payload
-    const {slot_start_timing}=req.body;
     const StationDocument=await Station_Model.findById(station_id)
     console.log(StationDocument)
     const slotObject=StationDocument.slots.map((slot)=>{

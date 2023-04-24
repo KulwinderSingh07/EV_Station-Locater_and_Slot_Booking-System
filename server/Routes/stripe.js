@@ -6,7 +6,7 @@ const stripe=Stripe(process.env.STRIPE_KEY)
 router.post("/create-checkout-session", async (req, res) => {
     try{
     const data=req.body.slots
-    console.log(data)
+    // console.log(data)
     const session = await stripe.checkout.sessions.create({
       line_items:[
         {
@@ -26,9 +26,17 @@ router.post("/create-checkout-session", async (req, res) => {
     });
   
     // res.redirect(303, session.url);
+    if(session.url!=`${process.env.CLIENT_URL}/checkout-success`){
+        // console.log(session.url)
+        res.send({
+            url:session.url,
+            payed:false
+        })
+    }else{
     res.send({ url: session.url ,
         payed:true
     });
+}
 }catch(err){
     console.log(err.message)
     res.send({

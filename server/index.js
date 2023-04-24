@@ -8,10 +8,7 @@ const cors=require("cors");
 const bodyparser=require("body-parser");
 
 require("dotenv").config();
-app.use(cors({
-    origin:"http://localhost:3000",
-    credentials:true
-}));
+app.use(cors());
 app.use(express.json())
 app.use(cookieparser());
 app.use(bodyparser.urlencoded({ extended: true }));

@@ -111,3 +111,92 @@
     align-items: center;
     justify-content: center;
 }
+/* .LoginPage{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    /* width: 100px; */
+    /* height: 100px; */
+/* }
+.loginform{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border: 2px solid black;
+} */ 
+.leavebody{
+    width: 100%;
+    height: 100%;
+    background-color: #232B2B;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+  }
+  .leaveform{
+    width: 600px;
+    padding: 3rem 0rem;
+    margin:auto;
+    text-align:center;
+    border:1px solid;
+    border-radius: 13px;
+    margin:14% auto;
+    background-color: white;
+    backdrop-filter:blur(120px);
+    box-shadow: 0 8px 40px 0 rgba(0,0,0,0.37);
+  }
+  .leaveform input, .create textarea, .create select{
+    width:70%;
+    padding:6px 10px;
+    margin:10px;
+    border:1px solid #f1356d;
+    box-sizing:border-box;
+    display:block;
+  }
+  
+  .leaveform input{
+    margin: 5px 5px 5px 100px;
+  }
+  .leaveform button{
+    background: #DC3D24;
+    font-size: large;
+    width: 15%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color:#fff;
+    border:0;
+    padding:8px;
+    border-radius:8px;
+    cursor:pointer;
+  }
+  .leaveform button:hover:not(.active) {
+    background-color: #04AA6D;
+    color: black;
+  }
+  .leaveform h2{
+    color:black;
+    padding: 1.3rem;
+    font-size:xx-large;
+    font-weight: bold;
+  }
+  .leaveform .reasonbox{
+    height: 100px;
+  }
+  .leaveform label{
+    font-size:x-large;
+  }
+  .singupform{
+    margin: 13% auto;
+  }
+  .leaveform a{
+    position: relative;
+    margin-left: 80%;
+    text-decoration: none;
+    font-size: x-large;
+}
+.leaveform a:hover{
+    text-decoration: underline;
+}

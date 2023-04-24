@@ -11,7 +11,7 @@ const StaionDetailsSlots = () => {
     // console.log(stationID)
     const staiondatafetcher=async(req,res)=>{
         const staiton_data=await axios.get(`${REQUEST_URL}/station/${stationID}`)
-        console.log(staiton_data.data.data)
+        // console.log(staiton_data.data.data)
         setStationData(staiton_data.data.data)
     } 
     useEffect(()=>{
@@ -46,7 +46,8 @@ const StaionDetailsSlots = () => {
                 <div>Slot Starting Time </div>
                 <div>Slot End Time</div>
                  <div>Slot Price </div>
-                 <div>Button</div>
+                 <div>Booking Button</div>
+                 <div>Booking remove</div>
                  </div>
                     {stationData.slots.map((slots)=>{
                         return(
@@ -55,7 +56,7 @@ const StaionDetailsSlots = () => {
                                 <div>{slots.slot_start_timing}</div>
                                 <div>{slots.slot_end_timing}</div>
                                 <div>{slots.price}</div>
-                                <PayButton slots={slots}/>
+                                <PayButton slots={slots} stationData={stationData}/>
                             </div>
                             </div>
                         )

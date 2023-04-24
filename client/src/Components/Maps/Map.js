@@ -16,6 +16,7 @@ const containerStyle = {
 
 
 const MapsViewWindow = () => {
+  document.body.style.backgroundColor = "#FFFFFF";
     const [lat, setLat] = useState()
     const [lng, setLns] = useState()
     const [values,setvalues]=useState()

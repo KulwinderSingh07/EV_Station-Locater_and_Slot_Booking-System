@@ -1,11 +1,12 @@
 import {useNavigate} from "react-router-dom"
 const StationsList = ({stationsData,map}) => {
-    console.log("hello",stationsData)
+    // console.log("hello",stationsData)
+
     const navigator=useNavigate();
     return ( 
         <div className="StationDataList_Heading">
         {stationsData && stationsData.map((station)=>{
-            console.log(station)
+            // console.log(station)
             return(
                 <div className="stationlist">
                 <div className="stationbody">

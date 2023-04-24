@@ -3,6 +3,7 @@ import axios from "axios"
 // import dotenv from "dotenv"
 import REQUEST_URL from "../Utils"
 const SignupForm = () => {
+    document.body.style.backgroundColor = "#232B2B";
     const [Name, setName] = useState("")
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
@@ -17,25 +18,40 @@ const SignupForm = () => {
         console.log(UserSingup);
     }
     return ( 
-        <>
-        <form>
+        <div className="leaveform singupform">
+            <h2>Singup</h2>
+          <form className="form">
             <label>Name</label>
-            <input type="text" placeholder="Name..." className="SignupName" onChange={(e)=>{
-                setName(e.target.value);
-            }}/>
+            <input className="signup-name-input" placeholder="Name" onClick={(e)=>{
+            setName(e.target.value)
+            }}></input>
             <label>Email</label>
-           <input type="email" placeholder="Email..." className="SignupEmail" required={true} onChange={(e)=>{
-            setEmail(e.target.value)
-           }}/>
-           <label>Password</label>
-           <input type="password" placeholder="Password..." className="SingupPassword" required={true} onChange={(e)=>{
-            setPassword(e.target.value)
-           }}/>
-           <button onClick={(e)=>{
-            submitionHandler(e);
-           }}>SignUp</button>
-        </form>
-        </>
+            <input className="signup-email-input" placeholder="Email" onChange={(e)=>{
+                setEmail(e.target.value)
+            }}></input>
+            <label>Password</label>
+            <input
+              className="signup-password-input"
+              placeholder="Password"
+              onChange={(e)=>{
+                setPassword(e.target.value)
+              }}
+            ></input>
+            {/* <label>Confrim Password</label>
+            <input
+              className="signup-cpassword-input"
+              placeholder="Re-Enter Password"
+            ></input> */}
+            <button
+              onClick={(e) => {
+                submitionHandler(e);
+              }}
+            >
+              Signup
+            </button>
+          </form>
+          <a href="/">Login</a>
+        </div>
      );
 }
  
