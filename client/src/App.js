@@ -8,6 +8,7 @@ import StaionDetailsSlots from './Components/StaionDetails';
 import PaymentPage from './Components/Payment';
 import PaymnetConfirmation from './Components/confirmation';
 import PaymentCancelation from './Components/PaymentCancelation';
+import AdminDashBoard from './Components/Admin';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route exact path='/Payment' element={<PaymentPage/>}/>
             <Route exact path='/cart' element={<PaymentCancelation/>}/>
             <Route exact path='/checkout-success' element={<PaymnetConfirmation/>}/>
+            <Route exact path='/admin' element={<AdminDashBoard/>}/>
           </Routes>
       </BrowserRouter>
     </div>

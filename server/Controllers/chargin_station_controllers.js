@@ -106,4 +106,23 @@ const Remove_Booking=async(req,res)=>{
             })
         } 
 }
-module.exports={input_chargin_station,GetAllStation,Unique_station,Slot_Booking_Station,Remove_Booking}
+const GetCharginStationByOwner=async(req,res)=>{
+    try{
+    const id=req.params.OwnerId
+    const OwnerDocumet=await Station_Model.find({owner_id:id})
+    console.log(OwnerDocumet)
+    res.json({
+        message:"Owner stations",
+        data:OwnerDocumet
+    })
+    }
+    catch(err){
+        res.json({
+            message:err.message,
+            fetched:false
+        })
+    }
+}
+
+
+module.exports={input_chargin_station,GetAllStation,Unique_station,Slot_Booking_Station,Remove_Booking,GetCharginStationByOwner}

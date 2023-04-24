@@ -200,3 +200,10 @@
 .leaveform a:hover{
     text-decoration: underline;
 }
+.stationadmin{
+    display: flex;
+    justify-content: space-between; 
+}
+button.Booked{
+    background: red;
+}

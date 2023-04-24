@@ -29,6 +29,15 @@ const removeslot=async()=>{
         slot_start_timing
     })
     console.log(slotbookdata)
+    if(slotbookdata.data.BookingRemoved==true){
+        swal({
+            title: "Booking Removed",
+            text: "The booked slot has been removed",
+            icon: "success",
+        }).then(()=>{
+            window.location.reload(false);
+        })
+    }
 }
   const handleCheckout = () => {
     axios
@@ -43,7 +52,7 @@ const removeslot=async()=>{
 
   return (
     <>
-      <button onClick={() => updateslot()}>Book</button>
+      <button classname={slots.booked?"Booked":"Book"} onClick={() => updateslot()}>{slots.booked?"Booked":"Book"}</button>
       <button onClick={()=>removeslot()}>Remove</button>
     </>
   );

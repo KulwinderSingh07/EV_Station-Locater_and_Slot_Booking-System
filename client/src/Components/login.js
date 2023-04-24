@@ -36,7 +36,13 @@ const LoginComponent = () => {
         console.log(GetCookie())
         console.log(UserLogin.data)
         if(UserLogin.data.logedin==true){
-            navigate("/Map")
+            if(UserLogin.data.role=="user"){
+                navigate("/Map")
+            }
+            else{
+                navigate("/admin")
+            }
+            
         }
     }
     useEffect(()=>{
