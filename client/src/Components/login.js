@@ -77,7 +77,7 @@ const LoginComponent = () => {
               LogIn
             </button>
           </form>
-            <a href="/User/Singup">Singup</a>
+            <a href="/User/Singup">Sign Up</a>
       </div>
              );
 }

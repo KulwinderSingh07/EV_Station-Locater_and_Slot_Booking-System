@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AdminDashBoard = () => {
+    document.body.style.backgroundColor = "#FFFFFF";
+
     const [adminid, Setadminid] = useState()
     const [adminData,setAdminData]=useState();
     const [stationdata, setStationdata] = useState(null)

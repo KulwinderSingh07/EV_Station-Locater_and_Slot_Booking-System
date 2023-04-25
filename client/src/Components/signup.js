@@ -19,7 +19,7 @@ const SignupForm = () => {
     }
     return ( 
         <div className="leaveform singupform">
-            <h2>Singup</h2>
+            <h2>Sign Up</h2>
           <form className="form">
             <label>Name</label>
             <input className="signup-name-input" placeholder="Name" onClick={(e)=>{
