@@ -15,8 +15,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
           <Routes>
-            {/* <Route exact path="/" element={<Mainpage />} /> */}
-            {/* <Route exact path='/' element={<DashBoard/>}/> */}
             <Route exact path="/" element={<LoginPage/>} />
             <Route exact path="/User/Singup" element={<SignupPage/>} />
             <Route exact path='/Map' element={<MapsViewWindow/>}/>
