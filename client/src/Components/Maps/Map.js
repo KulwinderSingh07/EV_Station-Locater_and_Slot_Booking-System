@@ -9,6 +9,7 @@ import axios from "axios"
 import REQUEST_URL from '../../Utils';
 import {BiCurrentLocation} from 'react-icons/bi'
 import StationsList from '../StationsList';
+// import 'dotenv/config'
 const containerStyle = {
   width: '50%',
   height: '100vh',
@@ -47,7 +48,7 @@ const MapsViewWindow = () => {
         },[])
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: "AIzaSyCgT3Xb6iluNg4IKIiiZc-nerG30hgcLn4",
+        googleMapsApiKey:"",    //Input the google maps api key
         libraries:['places'],
       })
       const onLoad =useCallback((map)=> {
